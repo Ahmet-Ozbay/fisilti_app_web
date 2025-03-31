@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <!-- Favicon ekleme -->
-  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="icon" type="image/png" href="assets/logo.png">
   <!-- Open Graph etiketleri -->
   <meta property="og:title" content="Fısıltı - Haritada Sesli Mesajlar">
   <meta property="og:description" content="İster bir anını anlat, ister bir şarkı mırıldan, istersen bağır, istersen fısılda...">
@@ -177,8 +177,11 @@
         <div class="form-group">
           <textarea id="message" name="message" placeholder="Mesajınız" required></textarea>
         </div>
-        <button type="submit" class="btn primary">Mesaj Gönder</button>
-      </form>
+        <!-- Yeni eklenen kapsayıcı -->
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Mesaj Gönder</button>
+        </div>
+      </form>      
       <div id="form-success" class="form-success">
         Mesajınız için teşekkürler! En kısa sürede size geri dönüş yapacağız.
       </div>
@@ -196,8 +199,8 @@
           <h4>Hızlı Bağlantılar</h4>
           <a href="#features">Özellikler</a>
           <a href="#team">Ekibimiz</a>
-          <a href="#download">İndir</a>
           <a href="#contact">İletişim</a>
+          <a href="#download">İndir</a>
         </div>
         <div class="footer-section">
           <h4>Sosyal Medya Hesaplarımız</h4>

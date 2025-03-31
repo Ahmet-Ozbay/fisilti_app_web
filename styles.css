@@ -1,678 +1,703 @@
 /* Temel değişkenler */
 :root {
-    --primary-color: #4F46E5;
-    --primary-hover: #4338CA;
-    --secondary-color: #10B981;
-    --secondary-hover: #059669;
-    --dark-bg: #111827;
-    --darker-bg: #0F172A;
-    --light-text: #F9FAFB;
-    --gray-text: #9CA3AF;
-    --card-bg: rgba(31, 41, 55, 0.8);
-    --transition: all 0.3s ease;
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --border-radius: 8px;
+  --primary-color: #4F46E5;
+  --primary-hover: #4338CA;
+  --secondary-color: #10B981;
+  --secondary-hover: #059669;
+  --dark-bg: #111827;
+  --darker-bg: #0F172A;
+  --light-text: #F9FAFB;
+  --gray-text: #9CA3AF;
+  --card-bg: rgba(31, 41, 55, 0.8);
+  --transition: all 0.3s ease;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --border-radius: 8px;
+}
+
+/* Dark mode tema ayarları */
+[data-theme="dark"] {
+  --bg-color: var(--dark-bg);
+  --header-bg: var(--darker-bg);
+  --text-color: var(--light-text);
+  --card-bg: rgba(31, 41, 55, 0.8);
+}
+
+/* Genel stiller */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /* Smooth scrolling for section navigation */
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Başlıklar */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--primary-color);
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--primary-color);
+}
+
+/* Navbar stili */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(17, 24, 39, 0.95);
+  transition: var(--transition);
+  padding: 1rem 0;
+}
+
+.navbar.scrolled {
+  background: rgba(17, 24, 39, 0.98);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.logo-image {
+  height: 48px;
+  margin-right: 18px;
+}
+
+.logo-text {
+  color: var(--light-text);
+  font-weight: 700;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-links a {
+  font-weight: 500;
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: var(--transition);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a.download-btn {
+  border: 2px solid #fff;        /* Beyaz kenarlık (koyu zeminde görünür) */
+  border-radius: 9999px;         /* Oval şekil için büyük border-radius */
+  padding: 0.5rem 1.5rem;        /* İç boşluk */
+  background: transparent;       /* Arkaplan şeffaf */
+  color: #fff;                   /* Yazı rengi */
+  font-weight: 600;             /* Yazıyı biraz kalın yapalım */
+  text-decoration: none;         /* Alt çizgi kaldırma */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-links a.download-btn:hover {
+  background-color: #fff;        /* Üzerine gelince beyaz arkaplan */
+  color: #000;                   /* Yazı siyah */
+}
+
+/* "İndir" linki için hover efekti kaldırılıyor */
+.download-btn::after {
+  display: none !important;
+}
+
+
+.mobile-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--light-text);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Full screen section styles - NEW */
+section {
+  min-height: 100vh; /* Make every section at least the height of viewport */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Hero bölümü */
+.hero {
+  min-height: 100vh;
+  padding-top: 80px; /* Account for navbar */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.hero .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1.2rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeInUp 1s ease;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: var(--gray-text);
+  animation: fadeInUp 1.2s ease;
+}
+
+.phone-mockup {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease;
+  animation: float 6s ease-in-out infinite;
+  max-width: 40%;
+  margin-left: auto;
+}
+
+.phone-mockup img {
+  max-width: 80%;
+  height: auto;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
   }
-  
-  /* Dark mode tema ayarları */
-  [data-theme="dark"] {
-    --bg-color: var(--dark-bg);
-    --header-bg: var(--darker-bg);
-    --text-color: var(--light-text);
-    --card-bg: rgba(31, 41, 55, 0.8);
+  50% {
+    transform: translateY(-10px);
   }
-  
-  /* Genel stiller */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  html {
-    scroll-behavior: smooth; /* Smooth scrolling for section navigation */
-  }
-  
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-  
-  .container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  /* Başlıklar */
-  h1, h2, h3, h4, h5, h6 {
-    margin-bottom: 1rem;
-    font-weight: 700;
-    line-height: 1.2;
-  }
-  
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  h2 {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 2.5rem;
-    position: relative;
-  }
-  
-  h2::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 4px;
-    background: var(--primary-color);
-    margin: 15px auto 0;
-    border-radius: 2px;
-  }
-  
-  p {
-    margin-bottom: 1rem;
-  }
-  
-  a {
-    color: var(--text-color);
-    text-decoration: none;
-    transition: var(--transition);
-  }
-  
-  a:hover {
-    color: var(--primary-color);
-  }
-  
-  /* Navbar stili */
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background: rgba(17, 24, 39, 0.95);
-    transition: var(--transition);
-    padding: 1rem 0;
-  }
-  
-  .navbar.scrolled {
-    background: rgba(17, 24, 39, 0.98);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .navbar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .logo a {
-    display: flex;
-    align-items: center;
-    font-size: 2rem;
-    font-weight: 700;
-  }
-  
-  .logo-image {
-    height: 48px;
-    margin-right: 18px;
-  }
-  
-  .logo-text {
-    color: var(--light-text);
-    font-weight: 700;
-  }
-  
-  .nav-links {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-  }
-  
-  .nav-links a {
-    font-weight: 500;
-    padding: 0.5rem 0;
-    position: relative;
-  }
-  
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--primary-color);
-    transition: var(--transition);
-  }
-  
-  .nav-links a:hover::after {
-    width: 100%;
-  }
-  
-  .nav-links a.download-btn {
-    border: 2px solid #fff;        /* Beyaz kenarlık (koyu zeminde görünür) */
-    border-radius: 9999px;         /* Oval şekil için büyük border-radius */
-    padding: 0.5rem 1.5rem;        /* İç boşluk */
-    background: transparent;       /* Arkaplan şeffaf */
-    color: #fff;                   /* Yazı rengi */
-    font-weight: 600;             /* Yazıyı biraz kalın yapalım */
-    text-decoration: none;         /* Alt çizgi kaldırma */
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .nav-links a.download-btn:hover {
-    background-color: #fff;        /* Üzerine gelince beyaz arkaplan */
-    color: #000;                   /* Yazı siyah */
-  }
-  
-  /* "İndir" linki için hover efekti kaldırılıyor */
-  .download-btn::after {
-    display: none !important;
-  }
-  
-  
-  .mobile-menu-button {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--light-text);
-    font-size: 1.5rem;
-    cursor: pointer;
-  }
-  
-  /* Full screen section styles - NEW */
-  section {
-    min-height: 100vh; /* Make every section at least the height of viewport */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 60px 0;
-    box-sizing: border-box;
-    position: relative;
-  }
-  
-  /* Hero bölümü */
-  .hero {
-    min-height: 100vh;
-    padding-top: 80px; /* Account for navbar */
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-  }
-  
+}
+
+/* Butonlar */
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  animation: fadeInUp 1.4s ease;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.8rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: center;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.btn.primary {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
+}
+
+.btn.primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(79, 70, 229, 0.5);
+}
+
+.btn.secondary {
+  background-color: transparent;
+  color: var(--light-text);
+  border: 1.5px solid var(--gray-text);
+}
+
+.btn.secondary:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+/* Özellikler bölümü */
+.features {
+  background: var(--darker-bg);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+  margin-top: 25px;
+}
+
+.feature-card {
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: var(--transition);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.feature-card.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  margin-bottom: 16px;
+}
+
+.feature-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+}
+
+/* Team Section */
+.team {
+  background: var(--bg-color);
+}
+
+.team-members {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+/* First row - 3 members */
+.team-members .team-member:nth-child(1),
+.team-members .team-member:nth-child(2),
+.team-members .team-member:nth-child(3) {
+  flex: 0 0 calc(33.333% - 30px);
+  max-width: calc(33.333% - 30px);
+}
+
+/* Second row - 2 members centered */
+.team-members .team-member:nth-child(4),
+.team-members .team-member:nth-child(5) {
+  flex: 0 0 calc(33.333% - 30px);
+  max-width: calc(33.333% - 30px);
+  margin-top: 20px;
+}
+
+.team-member {
+  text-align: center;
+  transition: var(--transition);
+}
+
+.team-member img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  object-fit: cover;
+  border: 3px solid var(--primary-color);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.team-member p {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.team-member i {
+  display: block;
+  color: var(--gray-text);
+  margin-bottom: 10px;
+}
+
+.linkedin-link {
+  display: inline-block;
+  color: var(--gray-text);
+  font-size: 1.5rem; /* Biraz daha büyük */
+  transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.linkedin-link:hover {
+  color: var(--primary-color);
+  transform: scale(1.2); /* Hover durumunda büyütme */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge efekti */
+}
+
+.linkedin-link:hover i {
+  color: var(--primary-color); /* İkon rengi değişimi */
+}
+
+
+
+/* İndirme bölümü */
+.download {
+  text-align: center;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(23, 37, 84, 0.8));
+}
+
+.download-text {
+  max-width: 650px;
+  margin: 0 auto 30px;
+  font-size: 1.1rem;
+  color: var(--gray-text);
+}
+
+.download-options {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.store-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(31, 41, 55, 0.9);
+  color: var(--light-text);
+  padding: 12px 25px;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  transition: var(--transition);
+  gap: 8px;
+  min-width: 160px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.store-button.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Contact Section */
+.contact {
+  background: var(--darker-bg);
+}
+
+.contact-text {
+  max-width: 650px;
+  margin: 0 auto 30px;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--gray-text);
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  background: rgba(31, 41, 55, 0.5);
+  border: 1px solid rgba(156, 163, 175, 0.2);
+  border-radius: var(--border-radius);
+  color: var(--light-text);
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.form-group textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 5px var(--primary-color);
+}
+
+/* Butonun sağa yaslanacağı kapsayıcı */
+.form-actions {
+  text-align: right; /* İçindeki öğeleri sağa yaslar */
+}
+
+/* "Mesaj Gönder" butonunu güzelleştirmek */
+.btn.primary {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;                  /* Kenarlık kaldırma */
+  padding: 0.8rem 2rem;         /* Butonu biraz daha geniş yapalım */
+  border-radius: 6px;           /* Hafif köşeleri yuvarlayalım */
+  font-size: 1rem;              /* Yazı boyutu */
+  font-weight: 600;             /* Yazıyı kalın yapalım */
+  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3); /* Hafif gölge */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn.primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(79, 70, 229, 0.4); /* Hover gölgesi */
+}
+
+
+
+/* Footer styles */
+.footer {
+  background-color: var(--bg-color);
+  padding: 60px 0 20px;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+  margin-bottom: 20px;
+}
+
+.footer-section h4 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: var(--light-text);
+}
+
+.footer-section a {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--gray-text);
+}
+
+.footer-section a:hover {
+  color: var(--primary-color);
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(31, 41, 55, 0.8);
+  border-radius: 50%;
+  color: var(--gray-text);
+  font-size: 1.1rem;
+  transition: var(--transition);
+}
+
+.social-links a:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(156, 163, 175, 0.1);
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+/* Coming soon message */
+.coming-soon-message {
+  margin-top: 20px;
+  color: var(--gray-text);
+  font-size: 1rem;
+  display: none;
+}
+
+.form-success {
+  margin-top: 20px;
+  color: var(--secondary-color);
+  text-align: center;
+  display: none;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
   .hero .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    text-align: center;
   }
   
   .hero-content {
-    flex: 1;
-    max-width: 600px;
-  }
-  
-  .hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 1.2rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: fadeInUp 1s ease;
-  }
-  
-  .hero-content p {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    color: var(--gray-text);
-    animation: fadeInUp 1.2s ease;
-  }
-  
-  .phone-mockup {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.5s ease;
-    animation: float 6s ease-in-out infinite;
-    max-width: 40%;
-    margin-left: auto;
-  }
-  
-  .phone-mockup img {
-    max-width: 80%;
-    height: auto;
-  }
-  
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-  
-  /* Butonlar */
-  .cta-buttons {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1.5rem;
-    animation: fadeInUp 1.4s ease;
-  }
-  
-  .btn {
-    display: inline-block;
-    padding: 0.7rem 1.8rem;
-    border-radius: var(--border-radius);
-    font-weight: 600;
-    font-size: 0.95rem;
-    text-align: center;
-    transition: var(--transition);
-    cursor: pointer;
-  }
-  
-  .btn.primary {
-    background-color: var(--primary-color);
-    color: white;
-    box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
-  }
-  
-  .btn.primary:hover {
-    background-color: var(--primary-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.5);
-  }
-  
-  .btn.secondary {
-    background-color: transparent;
-    color: var(--light-text);
-    border: 1.5px solid var(--gray-text);
-  }
-  
-  .btn.secondary:hover {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-    transform: translateY(-2px);
-  }
-  
-  /* Özellikler bölümü */
-  .features {
-    background: linear-gradient(to bottom, var(--bg-color), var(--darker-bg));
-  }
-  
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 25px;
-    margin-top: 25px;
-  }
-  
-  .feature-card {
-    background: var(--card-bg);
-    padding: 25px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    text-align: center;
-    transition: var(--transition);
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  
-  .feature-card.animated {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .feature-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  }
-  
-  .feature-icon {
-    font-size: 2.2rem;
-    color: var(--primary-color);
-    margin-bottom: 16px;
-  }
-  
-  .feature-card h3 {
-    font-size: 1.4rem;
-    margin-bottom: 12px;
-  }
-  
-  /* Team Section */
-  .team {
-    background: var(--bg-color);
-  }
-  
-  .team-members {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 30px;
-  }
-  
-  /* First row - 3 members */
-  .team-members .team-member:nth-child(1),
-  .team-members .team-member:nth-child(2),
-  .team-members .team-member:nth-child(3) {
-    flex: 0 0 calc(33.333% - 30px);
-    max-width: calc(33.333% - 30px);
-  }
-  
-  /* Second row - 2 members centered */
-  .team-members .team-member:nth-child(4),
-  .team-members .team-member:nth-child(5) {
-    flex: 0 0 calc(33.333% - 30px);
-    max-width: calc(33.333% - 30px);
-    margin-top: 20px;
-  }
-  
-  .team-member {
-    text-align: center;
-    transition: var(--transition);
-  }
-  
-  .team-member img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    margin: 0 auto 15px;
-    object-fit: cover;
-    border: 3px solid var(--primary-color);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  }
-  
-  .team-member p {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-    font-weight: 600;
-  }
-  
-  .team-member i {
-    display: block;
-    color: var(--gray-text);
-    margin-bottom: 10px;
-  }
-  
-  .linkedin-link {
-    display: inline-block;
-    color: var(--gray-text);
-    font-size: 1.5rem; /* Biraz daha büyük */
-    transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .linkedin-link:hover {
-    color: var(--primary-color);
-    transform: scale(1.2); /* Hover durumunda büyütme */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge efekti */
-  }
-  
-  .linkedin-link:hover i {
-    color: #0166c6;
-  }
-  
-  
-  
-  /* İndirme bölümü */
-  .download {
-    text-align: center;
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(23, 37, 84, 0.8));
-  }
-  
-  .download-text {
-    max-width: 650px;
-    margin: 0 auto 30px;
-    font-size: 1.1rem;
-    color: var(--gray-text);
-  }
-  
-  .download-options {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-bottom: 15px;
-  }
-  
-  .store-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(31, 41, 55, 0.9);
-    color: var(--light-text);
-    padding: 12px 25px;
-    border-radius: var(--border-radius);
-    font-weight: 600;
-    transition: var(--transition);
-    gap: 8px;
-    min-width: 160px;
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  
-  .store-button.animated {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* Contact Section */
-  .contact {
-    background: var(--darker-bg);
-  }
-  
-  .contact-text {
-    max-width: 650px;
-    margin: 0 auto 30px;
-    text-align: center;
-    font-size: 1.1rem;
-    color: var(--gray-text);
-  }
-  
-  .contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    padding: 12px;
-    background: rgba(31, 41, 55, 0.5);
-    border: 1px solid rgba(156, 163, 175, 0.2);
-    border-radius: var(--border-radius);
-    color: var(--light-text);
-    font-family: inherit;
-    font-size: 1rem;
-  }
-  
-  .form-group textarea {
-    min-height: 150px;
-    resize: vertical;
-  }
-  
-  .form-group input:focus,
-  .form-group textarea:focus {
-    border-color: var(--primary-color);
-    outline: none;
-    box-shadow: 0 0 5px var(--primary-color);
-  }
-  
-  
-  /* Footer styles */
-  .footer {
-    background-color: var(--darker-bg);
-    padding: 60px 0 20px;
-  }
-  
-  .footer-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    max-width: 100%;
     margin-bottom: 40px;
   }
   
-  .footer-section {
-    flex: 1;
-    min-width: 200px;
-    margin-bottom: 20px;
-  }
-  
-  .footer-section h4 {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-    color: var(--light-text);
-  }
-  
-  .footer-section a {
-    display: block;
-    margin-bottom: 10px;
-    color: var(--gray-text);
-  }
-  
-  .footer-section a:hover {
-    color: var(--primary-color);
-  }
-  
-  .social-links {
-    display: flex;
-    gap: 15px;
-  }
-  
-  .social-links a {
-    display: inline-flex;
-    align-items: center;
+  .cta-buttons {
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    background: rgba(31, 41, 55, 0.8);
-    border-radius: 50%;
-    color: var(--gray-text);
-    font-size: 1.1rem;
-    transition: var(--transition);
   }
   
-  .social-links a:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: translateY(-3px);
+  .phone-mockup {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+  
+  .team-members .team-member:nth-child(1),
+  .team-members .team-member:nth-child(2),
+  .team-members .team-member:nth-child(3),
+  .team-members .team-member:nth-child(4),
+  .team-members .team-member:nth-child(5) {
+    flex: 0 0 calc(50% - 30px);
+    max-width: calc(50% - 30px);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  
+  .mobile-menu-button {
+    display: block;
+  }
+  
+  .team-members .team-member:nth-child(1),
+  .team-members .team-member:nth-child(2),
+  .team-members .team-member:nth-child(3),
+  .team-members .team-member:nth-child(4),
+  .team-members .team-member:nth-child(5) {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  .footer-content {
+    flex-direction: column;
   }
   
   .footer-bottom {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 20px;
-    border-top: 1px solid rgba(156, 163, 175, 0.1);
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
   }
   
   .footer-links {
-    display: flex;
-    gap: 20px;
+    justify-content: center;
   }
-  
-  /* Coming soon message */
-  .coming-soon-message {
-    margin-top: 20px;
-    color: var(--gray-text);
-    font-size: 1rem;
-    display: none;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .form-success {
-    margin-top: 20px;
-    color: var(--secondary-color);
-    text-align: center;
-    display: none;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  /* Responsive styles */
-  @media (max-width: 992px) {
-    .hero .container {
-      flex-direction: column;
-      text-align: center;
-    }
-    
-    .hero-content {
-      max-width: 100%;
-      margin-bottom: 40px;
-    }
-    
-    .cta-buttons {
-      justify-content: center;
-    }
-    
-    .phone-mockup {
-      max-width: 70%;
-      margin: 0 auto;
-    }
-    
-    .team-members .team-member:nth-child(1),
-    .team-members .team-member:nth-child(2),
-    .team-members .team-member:nth-child(3),
-    .team-members .team-member:nth-child(4),
-    .team-members .team-member:nth-child(5) {
-      flex: 0 0 calc(50% - 30px);
-      max-width: calc(50% - 30px);
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .nav-links {
-      display: none;
-    }
-    
-    .mobile-menu-button {
-      display: block;
-    }
-    
-    .team-members .team-member:nth-child(1),
-    .team-members .team-member:nth-child(2),
-    .team-members .team-member:nth-child(3),
-    .team-members .team-member:nth-child(4),
-    .team-members .team-member:nth-child(5) {
-      flex: 0 0 100%;
-      max-width: 100%;
-    }
-    
-    .footer-content {
-      flex-direction: column;
-    }
-    
-    .footer-bottom {
-      flex-direction: column;
-      gap: 15px;
-      text-align: center;
-    }
-    
-    .footer-links {
-      justify-content: center;
-    }
-  }
-  
-  /* Animations */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+}
