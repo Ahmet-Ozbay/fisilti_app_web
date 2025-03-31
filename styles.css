@@ -156,7 +156,6 @@ body {
     transition: 0.3s ease; /* Hover geçişi */
   }
   
-  /* ::after içeriğini tamamen kaldırıyoruz */
   .phone-mockup::after {
     content: none !important;
     box-shadow: none !important;
@@ -1230,58 +1229,116 @@ section {
     overflow: hidden;
     padding: 2rem 1rem;
   }
-  
+    
   .team h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;          /* Başlığı küçülttüm */
     margin-bottom: 2rem;
     color: var(--text-color);
     z-index: 1;
   }
-  
+    
   .team-members {
     display: flex;
-    gap: 6rem;                /* Üyeler arasındaki boşluğu arttırdık */
+    flex-wrap: wrap;            /* Önemli: Satırların alt alta geçmesine izin ver */
+    justify-content: center;    /* Yatayda ortala */
+    width: 100%;                /* Tam genişlik kullan */
+    max-width: 1000px;          /* İçeriğin maksimum genişliğini sınırla */
+    gap: 2rem;                  /* Genel boşlukları azalttım */
     z-index: 1;
   }
-  
+    
   .team-member {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: calc(33.33% - 2rem); /* İlk satırdaki 3 üye için genişlik */
+    min-width: 160px;           /* Daha küçük minimum genişlik */
+    margin-bottom: 2rem;        /* Satırlar arası boşluğu azalttım */
   }
   
+  /* Alt sırada olan üyelerin satırını düzenle */
+  .team-members::after {
+    content: "";
+    flex-basis: 100%;           /* Satır sonu kırılımı yaratır */
+    width: 0;                    
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+  }
+  
+  /* İkinci satırdaki üyeler için özel stil */
+  .team-member:nth-child(n+4) {
+    width: 200px;               /* Sabit genişlik */
+    margin: 0 2rem;             /* Sağdan ve soldan eşit marj */
+  }
+    
   .team-member img {
-    width: 200px;
-    height: 200px;
+    width: 160px;               /* Avatar boyutlarını küçülttüm */
+    height: 160px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     transition: transform 0.3s ease;
   }
-  
+    
   .team-member img:hover {
     transform: scale(1.07);
   }
-  
+    
   .team-member p {
     color: var(--text-color);
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1rem;           /* Yazı boyutunu küçülttüm */
+    margin: 0.25rem 0;         /* Yazılar arası boşluğu azalttım */
   }
-  
+    
   /* LinkedIn ikonunun stili */
   .linkedin-link {
-    margin-top: 1rem;
+    margin-top: 0.75rem;       /* Üst marjı azalttım */
     color: var(--text-color);
-    font-size: 1.5rem;
+    font-size: 1.25rem;        /* İkon boyutunu küçülttüm */
     transition: color 0.3s ease;
     text-decoration: none;
   }
-  
+    
   .linkedin-link:hover {
     color: var(--primary-color);
   }
   
+  /* Responsive düzenlemeler */
+  @media (max-width: 992px) {
+    .team-members {
+      gap: 1.5rem;
+    }
+    
+    .team-member {
+      width: calc(33.33% - 2rem);
+    }
+  }
   
-
+  @media (max-width: 768px) {
+    .team-member {
+      width: calc(50% - 1.5rem);
+    }
+    
+    .team-member:nth-child(n+4) {
+      width: calc(50% - 1.5rem);
+      margin: 0;
+    }
+    
+    .team-member img {
+      width: 140px;
+      height: 140px;
+    }
+  }
   
+  @media (max-width: 576px) {
+    .team-member, .team-member:nth-child(n+4) {
+      width: 100%;
+      margin: 0.75rem 0;
+    }
+    
+    .team h2 {
+      font-size: 2rem;
+    }
+  }
