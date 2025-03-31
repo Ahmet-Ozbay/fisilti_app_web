@@ -159,22 +159,21 @@ a:hover {
 }
 
 .nav-links a.download-btn {
-  border: 2px solid #fff;        /* Beyaz kenarlık (koyu zeminde görünür) */
-  border-radius: 9999px;         /* Oval şekil için büyük border-radius */
-  padding: 0.5rem 1.5rem;        /* İç boşluk */
-  background: transparent;       /* Arkaplan şeffaf */
-  color: #fff;                   /* Yazı rengi */
-  font-weight: 600;             /* Yazıyı biraz kalın yapalım */
-  text-decoration: none;         /* Alt çizgi kaldırma */
+  border: 2px solid #fff;       
+  border-radius: 9999px;         
+  padding: 0.5rem 1.5rem;       
+  background: transparent;       
+  color: #fff;                 
+  font-weight: 600;            
+  text-decoration: none;        
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .nav-links a.download-btn:hover {
-  background-color: #fff;        /* Üzerine gelince beyaz arkaplan */
-  color: #000;                   /* Yazı siyah */
+  background-color: #fff;       
+  color: #000;                  
 }
 
-/* "İndir" linki için hover efekti kaldırılıyor */
 .download-btn::after {
   display: none !important;
 }
@@ -189,9 +188,9 @@ a:hover {
   cursor: pointer;
 }
 
-/* Full screen section styles - NEW */
+/* Full screen section styles  */
 section {
-  min-height: 100vh; /* Make every section at least the height of viewport */
+  min-height: 100vh; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -203,7 +202,7 @@ section {
 /* Hero bölümü */
 .hero {
   min-height: 100vh;
-  padding-top: 80px; /* Account for navbar */
+  padding-top: 80px; 
   position: relative;
   overflow: hidden;
   display: flex;
@@ -408,23 +407,23 @@ section {
 .linkedin-link {
   display: inline-block;
   color: var(--gray-text);
-  font-size: 1.5rem; /* Biraz daha büyük */
+  font-size: 1.5rem; 
   transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .linkedin-link:hover {
   color: var(--primary-color);
-  transform: scale(1.2); /* Hover durumunda büyütme */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge efekti */
+  transform: scale(1.2); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 
 .linkedin-link:hover i {
-  color: var(--primary-color); /* İkon rengi değişimi */
+  color: var(--primary-color);
 }
 
 
 
-/* İndirme bölümü */
+/* Download section */
 .download {
   text-align: center;
   background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(23, 37, 84, 0.8));
@@ -512,30 +511,27 @@ section {
   box-shadow: 0 0 5px var(--primary-color);
 }
 
-/* Butonun sağa yaslanacağı kapsayıcı */
 .form-actions {
-  text-align: right; /* İçindeki öğeleri sağa yaslar */
+  text-align: right; 
 }
 
-/* "Mesaj Gönder" butonunu güzelleştirmek */
 .btn.primary {
   background-color: var(--primary-color);
   color: #fff;
-  border: none;                  /* Kenarlık kaldırma */
-  padding: 0.8rem 2rem;         /* Butonu biraz daha geniş yapalım */
-  border-radius: 6px;           /* Hafif köşeleri yuvarlayalım */
-  font-size: 1rem;              /* Yazı boyutu */
-  font-weight: 600;             /* Yazıyı kalın yapalım */
-  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3); /* Hafif gölge */
+  border: none;              
+  padding: 0.8rem 2rem;   
+  border-radius: 6px;     
+  font-size: 1rem;           
+  font-weight: 600;           
+  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3); 
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .btn.primary:hover {
   background-color: var(--primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 15px rgba(79, 70, 229, 0.4); /* Hover gölgesi */
+  box-shadow: 0 8px 15px rgba(79, 70, 229, 0.4); 
 }
-
 
 
 /* Footer styles */
@@ -573,6 +569,8 @@ section {
   color: var(--primary-color);
 }
 
+/* Footer quick links */
+
 .footer-section.quick-links .links-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -584,6 +582,7 @@ section {
   margin-bottom: 0.5rem; /* Alt boşluk */
 }
 
+/* Footer social links */
 
 .social-links {
   display: flex;

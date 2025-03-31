@@ -1,4 +1,3 @@
-// Dark mode varsayılan olarak ayarlanıyor (sadece koyu mod kullanılacak)
 document.documentElement.setAttribute('data-theme', 'dark');
 
 // Form elementlerini global olarak tanımla
