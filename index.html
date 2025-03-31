@@ -1,26 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fisilti - Voice Messages on Map</title>
+  <meta name="description" content="Fısıltı - Sesli mesajlarınızı harita üzerinde paylaşın. İster bir anınızı anlatın, ister bir şarkı mırıldanın, istediğiniz her şeyi paylaşın.">
+  <meta name="keywords" content="fısıltı, sesli mesaj, harita, sosyal medya, ses paylaşımı">
+  <title>Fısıltı - Haritada Sesli Mesajlar</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Favicon ekleme -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <!-- Open Graph etiketleri -->
+  <meta property="og:title" content="Fısıltı - Haritada Sesli Mesajlar">
+  <meta property="og:description" content="İster bir anını anlat, ister bir şarkı mırıldan, istersen bağır, istersen fısılda...">
+  <meta property="og:image" content="assets/og-image.png">
+  <meta property="og:url" content="https://fisilti.app">
 </head>
 <body>
   <nav class="navbar">
     <div class="container">
         <div class="logo">
             <a href="index.html">
-              <img src="assets/logo.png" alt="Fisilti Logo" class="logo-image">
+              <img src="assets/logo.png" alt="Fısıltı Logo" class="logo-image">
               <span class="logo-text">fısıltı</span>
             </a>
-          </div>
-      <div class="nav-links">
-        <a href="#team">Ekibimiz</a>
-        <a href="#contact">İletişim</a>
-        <a href="#download" class="download-btn">İndir</a>
-      </div>
+        </div>
+        <div class="nav-links">
+          <a href="#features">Özellikler</a>
+          <a href="#team">Ekibimiz</a>
+          <a href="#contact">İletişim</a>
+          <a href="#download" class="download-btn">İndir</a>
+        </div>
+        <button class="mobile-menu-button" aria-label="Menüyü Aç">
+          <i class="fas fa-bars"></i>
+        </button>
     </div>
   </nav>
 
@@ -29,18 +42,53 @@
       <div class="hero-content">
         <h1>Bir fısıltı bırak!</h1>
         <p>İster bir anını anlat, ister bir şarkı mırıldan, istersen bağır, istersen fısılda...</p>
-        
-
         <div class="cta-buttons">
           <a href="#download" class="btn primary">Şimdi Fısılda</a>
-          <a href="#contact" class="btn secondary">İletişim</a>
+          <a href="#features" class="btn secondary">Keşfet</a>
         </div>
       </div>
       <div class="phone-mockup">
-        <img src="assets/hero.png" alt="Fisilti App Preview">
+        <img src="assets/hero.png" alt="Fısıltı Uygulama Önizlemesi">
       </div>
     </div>
   </header>
+
+  <!-- Yeni Özellikler Bölümü -->
+  <section id="features" class="features">
+    <div class="container">
+      <h2>Özellikler</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <h3>Sesli Harita</h3>
+          <p>Sesli mesajlarınızı harita üzerinde dilediğiniz konuma bırakın.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-microphone"></i>
+          </div>
+          <h3>Kolay Kayıt</h3>
+          <p>Tek dokunuşla ses kaydedin ve anında paylaşın.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-lock"></i>
+          </div>
+          <h3>Gizlilik Kontrolleri</h3>
+          <p>Kimin göreceğini ve dinleyeceğini siz belirleyin.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-compass"></i>
+          </div>
+          <h3>Keşif Modu</h3>
+          <p>Çevrenizdeki fısıltıları keşfedin ve yeni hikayeler dinleyin.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section id="download" class="download">
     <div class="container">
@@ -49,78 +97,91 @@
         Fısıltı'yı cihazına getirmek için canla başla çalışıyoruz. Gelişmelerden haberdar olmak için takipte kal!
       </p>
       <div class="download-options">
-        <a href="#" class="store-button" onclick="return false;">
+        <a href="#" class="store-button" aria-label="App Store" onclick="showComingSoon(event)">
           <i class="fab fa-apple"></i>
           App Store
         </a>
-        <a href="#" class="store-button" onclick="return false;">
+        <a href="#" class="store-button" aria-label="Google Play" onclick="showComingSoon(event)">
           <i class="fab fa-google-play"></i>
           Google Play
         </a>
       </div>
+      <div id="coming-soon-message" class="coming-soon-message">
+        Çok yakında burada olacağız! Haberdar olmak için formu doldurabilirsin.
+      </div>
     </div>
   </section>
 
-<!-- Ekibimiz Bölümü -->
-<section id="team" class="team">
+  <section id="team" class="team">
     <div class="container">
       <h2>Ekibimiz</h2>
       <div class="team-members">
+        <!-- First row - 3 members -->
         <div class="team-member">
-          <img src="assets/avatar1.png" alt="Avatar 1">
+          <img src="assets/avatar1.png" alt="Samet Altındal">
           <p>SAMET ALTINDAL</p>
           <i>SAHA ARAŞTIRMACISI</i>
-          <a href="https://www.linkedin.com/in/samet-alt%C4%B1ndal-934412255/" target="_blank" class="linkedin-link">
+          <a href="https://www.linkedin.com/in/samet-alt%C4%B1ndal-934412255/" target="_blank" class="linkedin-link" aria-label="Samet Altındal LinkedIn">
             <i class="fab fa-linkedin"></i>
           </a>
         </div>
         <div class="team-member">
-          <img src="assets/avatar2.png" alt="Avatar 2">        
+          <img src="assets/avatar2.png" alt="Ahmet Özbay">        
           <p>AHMET ÖZBAY</p>
           <i>YAZAR, DÜŞÜN EMEKÇİSİ</i>
-          <a href="https://www.linkedin.com/in/ahmetozbay/" target="_blank" class="linkedin-link">
+          <a href="https://www.linkedin.com/in/ahmetozbay/" target="_blank" class="linkedin-link" aria-label="Ahmet Özbay LinkedIn">
             <i class="fab fa-linkedin"></i>
           </a>
         </div>
         <div class="team-member">
-          <img src="assets/avatar3.png" alt="Avatar 3">
+          <img src="assets/avatar3.png" alt="Mustafa Özgür">
           <p>MUSTAFA ÖZGÜR</p>
           <i>FÜTÜRİST</i>
-          <a href="https://linkedin.com/in/mmustafaozgur" target="_blank" class="linkedin-link">
+          <a href="https://linkedin.com/in/mmustafaozgur" target="_blank" class="linkedin-link" aria-label="Mustafa Özgür LinkedIn">
             <i class="fab fa-linkedin"></i>
           </a>
         </div>
-        <!-- Yeni eklenen ekip üyeleri -->
+        
+        <!-- Second row - 2 members (will be centered with CSS) -->
         <div class="team-member">
-          <img src="assets/avatar4.png" alt="Avatar 4">
+          <img src="assets/avatar4.png" alt="İlayda Tiryaki">
           <p>İLAYDA TİRYAKİ</p>
           <i>SOSYAL MEDYA UZMANI</i>
-          <a href="https://www.linkedin.com/in/ilayda-tiryaki-ras/" target="_blank" class="linkedin-link">
+          <a href="https://www.linkedin.com/in/ilayda-tiryaki-ras/" target="_blank" class="linkedin-link" aria-label="İlayda Tiryaki LinkedIn">
             <i class="fab fa-linkedin"></i>
           </a>
         </div>
         <div class="team-member">
-          <img src="assets/avatar5.png" alt="Avatar 5">
+          <img src="assets/avatar5.png" alt="Merve Başaran">
           <p>MERVE BAŞARAN</p>
-          <i>TASARIMCI</i>
-          <a href="https://linkedin.com/in/member5" target="_blank" class="linkedin-link">
+          <i>TASARIM UZMANI</i>
+          <a href="https://linkedin.com" target="_blank" class="linkedin-link" aria-label="Merve Başaran LinkedIn">
             <i class="fab fa-linkedin"></i>
           </a>
         </div>
       </div>
     </div>
   </section>
-  
 
   <section id="contact" class="contact">
     <div class="container">
       <h2>Söyle Söyle, Çekinme</h2>
-      <p class="contact-text">Aklına takılan herhangi bir şeyi çekinmeden söyleyebilirsin!</p> <br/>
-      <form class="contact-form">
-        <input type="email" placeholder="Enter your email" required>
-        <textarea placeholder="Your message" required></textarea>
+      <p class="contact-text">Aklına takılan herhangi bir şeyi çekinmeden söyleyebilirsin!</p>
+      <form id="contact-form" class="contact-form">
+        <div class="form-group">
+          <input type="text" id="name" name="name" placeholder="Adınız" required>
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" name="email" placeholder="E-posta adresiniz" required>
+        </div>
+        <div class="form-group">
+          <textarea id="message" name="message" placeholder="Mesajınız" required></textarea>
+        </div>
         <button type="submit" class="btn primary">Mesaj Gönder</button>
       </form>
+      <div id="form-success" class="form-success">
+        Mesajınız için teşekkürler! En kısa sürede size geri dönüş yapacağız.
+      </div>
     </div>
   </section>
 
@@ -133,6 +194,8 @@
         </div>
         <div class="footer-section">
           <h4>Hızlı Bağlantılar</h4>
+          <a href="#features">Özellikler</a>
+          <a href="#team">Ekibimiz</a>
           <a href="#download">İndir</a>
           <a href="#contact">İletişim</a>
         </div>
@@ -150,6 +213,10 @@
       </div>
       <div class="footer-bottom">
         <p>&copy; 2025 fısıltı, Bütün hakları saklıdır.</p>
+        <div class="footer-links">
+          <a href="#">Gizlilik Politikası</a>
+          <a href="#">Kullanım Şartları</a>
+        </div>
       </div>
     </div>
   </footer>
