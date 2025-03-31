@@ -573,6 +573,18 @@ section {
   color: var(--primary-color);
 }
 
+.footer-section.quick-links .links-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem; /* Linkler arası boşluk */
+}
+
+.footer-section.quick-links .links-wrapper a {
+  flex: 1 1 calc(50% - 0.5rem); /* Her link yaklaşık %50 genişlikte */
+  margin-bottom: 0.5rem; /* Alt boşluk */
+}
+
+
 .social-links {
   display: flex;
   gap: 15px;
