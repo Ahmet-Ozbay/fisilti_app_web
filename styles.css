@@ -66,24 +66,64 @@ body {
     align-items: center;
 }
 
-/* Logo Styles */
+
+/* İndir butonu (oval şekilli) */
+.download-btn {
+    border: 2px solid #fff;        /* Beyaz kenarlık (koyu zeminde görünür) */
+    border-radius: 9999px;         /* Oval şekil için büyük border-radius */
+    padding: 0.5rem 1.2rem;        /* İç boşluk */
+    background: transparent;       /* Arkaplan şeffaf */
+    color: #fff;                   /* Yazı rengi */
+    font-weight: 600;             /* Yazıyı biraz kalın yapalım */
+    text-decoration: none;         /* Alt çizgi kaldırma */
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .download-btn:hover {
+    background-color: #fff;        /* Üzerine gelince beyaz arkaplan */
+    color: #000;                   /* Yazı siyah */
+  }
+  
+/* "İndir" linki için hover efekti kaldırılıyor */
+.download-btn::after {
+    display: none !important;
+}
+
+/* Logo kapsayıcısı */
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.logo-image {
-    height: 40px;
-    width: auto;
-    object-fit: contain;
-}
-
-.logo-text {
-    font-size: 1.5rem;
-    font-weight: 700;
+    display: flex;              
+    justify-content: center;    
+    align-items: center;        
+  }
+  
+  /* Logo içindeki bağlantı */
+  .logo a {
+    display: flex;             
+    align-items: center;       
+    gap: 0.75rem;               /* Resim ile metin arası boşluk artırıldı */
+    text-decoration: none;     
     color: var(--primary-color);
-}
+  }
+  
+  /* Logo resmi - boyutu büyütüldü */
+  .logo-image {
+    width: 60px;               /* Önceki 40px'ten 60px'e çıkarıldı */
+    height: auto;
+    object-fit: contain;
+  }
+  
+  /* Logo metni - boyutu da biraz büyütüyoruz */
+  .logo-text {
+    font-size: 2rem;           /* Önceki 1.5rem'ten 2rem'e çıkarıldı */
+    font-weight: 700;
+    transition: color 0.3s ease;
+  }
+  
+  /* Hover durumunda renk değişimi (isteğe bağlı) */
+  .logo a:hover .logo-text {
+    color: var(--accent-color);
+  }
+  
 
 .nav-links a {
     margin-left: 2rem;
@@ -107,6 +147,35 @@ body {
 .nav-links a:hover::after {
     width: 100%;
 }
+
+.phone-mockup {
+    margin-left: 4rem;
+    width: fit-content;
+    position: relative;
+    transform: perspective(1000px) rotateY(-10deg);
+    transition: 0.3s ease; /* Hover geçişi */
+  }
+  
+  /* ::after içeriğini tamamen kaldırıyoruz */
+  .phone-mockup::after {
+    content: none !important;
+    box-shadow: none !important;
+    background: none !important;
+  }
+  
+  /* Hover sırasında sadece döndürme/büyütme */
+  .phone-mockup:hover {
+    transform: perspective(1000px) rotateY(0deg) scale(1.02);
+  }
+  
+  /* Görseldeki gölge ve kenar yuvarlamayı da kaldırabilirsiniz */
+  .phone-mockup img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  
 
 /* Hero Section */
 .hero {
@@ -1147,3 +1216,72 @@ section {
 [data-theme="light"] .hero::before {
     opacity: 0.03;
 } 
+
+/* Ekibimiz Bölümü */
+.team {
+    position: relative;
+    height: 100vh;              /* Ekran yüksekliğine eşit */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    /* İçeriği hem yatay hem dikeyde ortala */
+    text-align: center;
+    background-color: var(--card-background);
+    overflow: hidden;
+    padding: 2rem 1rem;
+  }
+  
+  .team h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    z-index: 1;
+  }
+  
+  .team-members {
+    display: flex;
+    gap: 6rem;                /* Üyeler arasındaki boşluğu arttırdık */
+    z-index: 1;
+  }
+  
+  .team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .team-member img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .team-member img:hover {
+    transform: scale(1.07);
+  }
+  
+  .team-member p {
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+  
+  /* LinkedIn ikonunun stili */
+  .linkedin-link {
+    margin-top: 1rem;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+    text-decoration: none;
+  }
+  
+  .linkedin-link:hover {
+    color: var(--primary-color);
+  }
+  
+  
+
+  

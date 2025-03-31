@@ -1,33 +1,5 @@
-// Dark mode functionality
-const darkModeToggle = document.getElementById('darkModeToggle');
-const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-
-// Set dark mode as default
+// Dark mode varsayılan olarak ayarlanıyor (sadece koyu mod kullanılacak)
 document.documentElement.setAttribute('data-theme', 'dark');
-darkModeToggle.querySelector('i').classList.remove('fa-moon');
-darkModeToggle.querySelector('i').classList.add('fa-sun');
-
-// Toggle dark mode
-darkModeToggle.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    
-    const icon = darkModeToggle.querySelector('i');
-    icon.classList.toggle('fa-sun');
-    icon.classList.toggle('fa-moon');
-});
-
-// Listen for system theme changes
-prefersDarkScheme.addEventListener('change', (e) => {
-    if (!localStorage.getItem('theme')) {
-        const newTheme = e.matches ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', newTheme);
-        updateDarkModeIcon(newTheme);
-    }
-});
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -52,24 +24,13 @@ window.addEventListener('scroll', () => {
     
     // Add/remove shadow based on scroll position
     if (currentScroll > 50) {
-        navbar.style.background = document.documentElement.getAttribute('data-theme') === 'dark' 
-            ? 'rgba(17, 24, 39, 0.98)' 
-            : 'rgba(255, 255, 255, 0.98)';
+        navbar.style.background = 'rgba(17, 24, 39, 0.98)';
         navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
     } else {
-        navbar.style.background = document.documentElement.getAttribute('data-theme') === 'dark'
-            ? 'rgba(17, 24, 39, 0.95)'
-            : 'rgba(255, 255, 255, 0.95)';
+        navbar.style.background = 'rgba(17, 24, 39, 0.95)';
         navbar.style.boxShadow = 'none';
     }
-
-    // Hide/show navbar based on scroll direction
-    if (currentScroll > lastScroll && currentScroll > 100) {
-        navbar.style.transform = 'translateY(-100%)';
-    } else {
-        navbar.style.transform = 'translateY(0)';
-    }
-
+    
     lastScroll = currentScroll;
 });
 
@@ -203,4 +164,4 @@ window.addEventListener('resize', () => {
             navLinks.classList.remove('active');
         }
     }
-}); 
+});
