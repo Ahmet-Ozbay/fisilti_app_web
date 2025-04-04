@@ -222,6 +222,11 @@ a {
   width: 100%;
 }
 
+.language-selector a.active-language {
+  font-weight: bold;
+  border-bottom: 2px solid var(--primary);
+}
+
 .download-btn {
   border: 2px solid var(--primary);
   border-radius: 9999px;

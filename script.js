@@ -92,3 +92,38 @@ document.querySelector('.mobile-menu-button').addEventListener('click', function
   const navLinks = document.querySelector('.nav-links');
   navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  const storedLang = localStorage.getItem('preferredLang');
+  const currentPage = window.location.pathname.split("/").pop();
+
+  if (!storedLang) {
+    const userLang = navigator.language || navigator.userLanguage;
+    if (userLang.startsWith("tr") && currentPage === "index-en.html") {
+      window.location.href = "index.html";
+      return;
+    }
+    if (!userLang.startsWith("tr") && currentPage === "index.html") {
+      window.location.href = "index-en.html";
+      return;
+    }
+  }
+
+  const pageLang = document.documentElement.lang;
+  const trLink = document.getElementById("tr-link");
+  const enLink = document.getElementById("en-link");
+
+  if (pageLang === "tr") {
+    trLink.classList.add("active-language");
+  } else if (pageLang === "en") {
+    enLink.classList.add("active-language");
+  }
+
+  trLink.addEventListener("click", function() {
+    localStorage.setItem("preferredLang", "tr");
+  });
+  enLink.addEventListener("click", function() {
+    localStorage.setItem("preferredLang", "en");
+  });
+});
+
