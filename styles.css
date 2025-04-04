@@ -1286,3 +1286,16 @@ a {
   padding: 0 20px 20px;
   max-height: 500px;
 }
+
+@media (max-width: 576px) {
+  .hero,
+  .features {
+    height: auto;
+    min-height: 100vh;
+  }
+  /* Nav bar kaplaması için örnek: */
+  .hero {
+    padding-top: 80px; /* sabit nav bar yüksekliğine göre ayarlayın */
+  }
+}
+
