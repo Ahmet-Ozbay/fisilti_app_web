@@ -458,19 +458,19 @@ a {
 /* Features Section */
 .features {
   background: var(--body-bg-gradient);
-  height: 100vh; /* Ekran yüksekliğine eşit */
+  height: 100vh; 
   display: flex;
   flex-direction: column;
-  justify-content: center; /* İçerikleri dikeyde ortalar */
-  align-items: center; /* İçerikleri yatayda ortalar */
+  justify-content: center; 
+  align-items: center; 
   box-sizing: border-box;
-  padding: 0 20px; /* Gerekirse yatay padding ekleyin */
+  padding: 0 20px; 
 }
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Her satırda 3 kart */
-  gap: 20px;                           /* Kartlar arası boşluk */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px;                           
   margin-top: 50px;
 }
 
@@ -630,8 +630,8 @@ a {
 
 /* Team Section */
 .team {
-  min-height: auto; /* İçeriğe göre yükseklik ayarlanır */
-  padding: 100px 0; /* Üst-alt boşluklar hafif azaltıldı */
+  min-height: auto; 
+  padding: 100px 0; 
   background: 
     radial-gradient(circle at 50% 30%, rgba(14, 165, 233, 0.15), transparent 70%),
     radial-gradient(circle at 80% 70%, rgba(0, 112, 244, 0.15), transparent 70%),
@@ -643,18 +643,18 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px; /* Kartlar arası boşluk 40px'den 30px'e çekildi */
-  margin: 20px auto 0; /* Üst margin hafif azaltıldı */
-  max-width: calc(220px * 3 + 2 * 30px); /* Kart genişliği 250px'den 220px'e indirildi */
+  gap: 30px;
+  margin: 20px auto 0; 
+  max-width: calc(220px * 3 + 2 * 30px);
 }
 
 .team-member {
-  flex: 0 0 220px; /* Kart genişliği 250px yerine 220px */
+  flex: 0 0 220px;
   max-width: 220px;
   text-align: center;
   transition: var(--transition);
   background: var(--card-bg);
-  padding: 20px 15px; /* İç padding hafif azaltıldı */
+  padding: 20px 15px; 
   border-radius: var(--border-radius);
   border: 1px solid var(--card-border);
   position: relative;
@@ -934,7 +934,6 @@ a {
   transform: translateX(5px);
 }
 
-/* Sosyal medya ikonları arasındaki boşluk artırıldı */
 .footer-social {
   display: flex;
   gap: 25px;
@@ -962,7 +961,7 @@ a {
   box-shadow: 0 10px 15px rgba(124, 58, 237, 0.3);
 }
 
-/* Footer bottom: Gizlilik politikası ve kullanım şartları aynı satırda, en sağda */
+/* Footer bottom: */
 .footer-bottom {
   display: flex;
   justify-content: space-between;
