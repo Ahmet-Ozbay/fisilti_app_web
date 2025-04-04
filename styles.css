@@ -1295,7 +1295,12 @@ a {
   }
   
   .app-store-button {
-    justify-content: center;
+    width: 100%;
+    justify-content: center !important;
+  }
+  .app-store-button span {
+    text-align: center;
+    width: 100%;
   }
 
   .hero {
