@@ -1293,9 +1293,13 @@ a {
     height: auto;
     min-height: 100vh;
   }
-  /* Nav bar kaplaması için örnek: */
+  
+  .app-store-button {
+    justify-content: center;
+  }
+
   .hero {
-    padding-top: 80px; /* sabit nav bar yüksekliğine göre ayarlayın */
+    padding-top: 80px; 
   }
 }
 
