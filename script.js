@@ -58,22 +58,7 @@ function updateThemeToggleButton() {
   });
 }
 
-// Form submission
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  // Form submission logic would go here
-  
-  // Show success message
-  document.getElementById('form-success').style.display = 'block';
-  
-  // Reset form
-  this.reset();
-  
-  // Hide success message after 5 seconds
-  setTimeout(function() {
-    document.getElementById('form-success').style.display = 'none';
-  }, 5000);
-});
+
 
 // Coming soon message
 function showComingSoon(e) {

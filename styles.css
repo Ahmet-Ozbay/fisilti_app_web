@@ -771,46 +771,6 @@ a {
   box-shadow: 0 10px 20px rgba(124, 58, 237, 0.3);
 }
 
-/* Contact Section */
-.contact {
-  background: var(--body-bg-gradient);
-  padding: 120px 0;
-}
-
-.contact-text {
-  max-width: 700px;
-  margin: 0 auto 40px;
-  text-align: center;
-  font-size: 1.2rem;
-  color: var(--gray);
-}
-
-.contact-form {
-  max-width: 700px;
-  margin: 0 auto;
-  background: var(--card-bg);
-  padding: 40px;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-  border: 1px solid var(--card-border);
-}
-
-.form-group {
-  margin-bottom: 25px;
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 15px;
-  background: var(--form-bg);
-  border: 1px solid rgba(156, 163, 175, 0.2);
-  border-radius: var(--border-radius);
-  color: var(--text-color);
-  font-family: inherit;
-  font-size: 1rem;
-  transition: var(--transition);
-}
 
 [data-theme="light"] .form-group input,
 [data-theme="light"] .form-group textarea {
@@ -945,25 +905,22 @@ a {
   margin-top: 20px;
 }
 
-/* Sosyal ikon stilleri */
+/* Sosyal ikonlar için sade görünüm */
 .social-icon {
-  display: flex;
+  display: inline-flex;           /* İkonlar yanyana olsun */
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(124, 58, 237, 0.1);
-  color: var(--primary);
-  font-size: 1.2rem;
-  transition: var(--transition);
+  font-size: 1.4rem;              /* İkon boyutu (isteğinize göre ayarlayabilirsiniz) */
+  color: #fff;                    /* İlk hali beyaz renk */
+  background: transparent;        /* Arka planda daire veya çerçeve olmasın */
+  border-radius: 0;               /* Köşeleri sıfırlayalım */
+  text-decoration: none;          /* Linklerin alt çizgisini kaldırma */
+  transition: color 0.3s ease;    /* Hover’da renk değişikliği animasyonu */
 }
 
+/* Hover durumunda mor renge geçiş */
 .social-icon:hover {
-  background: var(--primary);
-  color: white;
-  transform: translateY(-5px);
-  box-shadow: 0 10px 15px rgba(124, 58, 237, 0.3);
+  color: var(--primary);
 }
 
 /* Footer bottom: */
@@ -990,6 +947,11 @@ a {
 .footer-bottom a {
   color: var(--primary);
   font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-bottom a:hover {
+  color: var(--primary-hover);
 }
 
 /* Media Queries */
@@ -1104,9 +1066,6 @@ a {
     flex: 0 0 100%;
   }
   
-  .contact-form {
-    padding: 30px 20px;
-  }
   
   .footer-section {
     flex: 0 0 100%;
@@ -1141,155 +1100,6 @@ a {
     opacity: 1;
     transform: scale(1);
   }
-}
-
-/* Additional utility classes */
-.text-gradient {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-}
-
-.glass-effect {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-/* Testimonials Section */
-.testimonials {
-  padding: 120px 0;
-  background: var(--body-bg);
-  position: relative;
-  overflow: hidden;
-}
-
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  margin-top: 50px;
-}
-
-.testimonial-card {
-  background: var(--card-bg);
-  padding: 30px;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--card-border);
-  position: relative;
-  transition: var(--transition);
-}
-
-.testimonial-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  border-color: rgba(124, 58, 237, 0.2);
-}
-
-[data-theme="light"] .testimonial-card:hover {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-.testimonial-card::before {
-  content: '"';
-  position: absolute;
-  top: 10px;
-  left: 20px;
-  font-size: 5rem;
-  font-family: serif;
-  line-height: 1;
-  opacity: 0.1;
-  color: var(--primary);
-}
-
-.testimonial-content {
-  margin-bottom: 20px;
-  font-style: italic;
-  color: var(--gray);
-  line-height: 1.8;
-}
-
-.testimonial-author {
-  display: flex;
-  align-items: center;
-}
-
-.testimonial-author img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 15px;
-  object-fit: cover;
-  border: 2px solid var(--primary);
-}
-
-.author-info h5 {
-  font-size: 1.1rem;
-  margin-bottom: 0;
-}
-
-.author-info span {
-  font-size: 0.85rem;
-  color: var(--gray);
-}
-
-/* FAQ Section */
-.faq {
-  padding: 120px 0;
-  background: var(--body-bg-gradient);
-}
-
-.faq-container {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.faq-item {
-  background: var(--card-bg);
-  border-radius: var(--border-radius);
-  margin-bottom: 15px;
-  border: 1px solid var(--card-border);
-  overflow: hidden;
-}
-
-.faq-question {
-  padding: 20px;
-  cursor: pointer;
-  position: relative;
-  font-weight: 600;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: var(--transition);
-}
-
-.faq-question::after {
-  content: '+';
-  font-size: 1.5rem;
-  font-weight: 300;
-}
-
-.faq-item.active .faq-question {
-  background: rgba(124, 58, 237, 0.1);
-  color: var(--primary);
-}
-
-.faq-item.active .faq-question::after {
-  content: '−';
-}
-
-.faq-answer {
-  padding: 0 20px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-  color: var(--gray);
-}
-
-.faq-item.active .faq-answer {
-  padding: 0 20px 20px;
-  max-height: 500px;
 }
 
 @media (max-width: 576px) {
